@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/createe" th:object="${songForm}"  enctype="multipart/form-data">
+    NameSong:<input th:field="*{nameSong}">
+    NameSinger:<input th:field="*{nameSinger}">
+    Type:<input th:field="*{type}">
+    <input type="file" th:field="*{url}">
+    <input type="submit" th:value="thêm">
+</form>
+
+<h1 th:if="${message != 0}" th:text="Thành CÔng lần ${message}"></h1>
+</body>
+</html>

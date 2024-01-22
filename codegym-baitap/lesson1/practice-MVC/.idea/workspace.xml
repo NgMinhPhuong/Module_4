@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a1c8dc2d-139b-4c1b-be0c-84ccc29ab79b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Thay-NA/SpringBoot3-Security-JWT-thay-NA" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Thay-NA/SpringBoot3-Security-JWT-thay-NA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Thay-NA/thay-NA-m4/WebShopSpringAxios" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Thay-NA/thay-NA-m4/WebShopSpringAxios" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/java/com/example/demo1/HelloServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/java/com/example/demo1/configuration/AppConfigurations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/java/com/example/demo1/configuration/AppInit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/java/com/example/demo1/controller/GreetingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/webapp/WEB-INF/application-context.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/webapp/WEB-INF/dispatcher-servlet.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../anh-Hieu-demo/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2aq76Kgd7R0S1aXPv2hMRxy2mhM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.85" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.85" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="Gradle : com.codegym : practice-MVC-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Gradle___com_codegym___practice_MVC_1_0_SNAPSHOT_war" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : com.codegym : practice-MVC-1.0-SNAPSHOT.war" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1c8dc2d-139b-4c1b-be0c-84ccc29ab79b" name="Changes" comment="" />
+      <created>1705034081937</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705034081937</updated>
+      <workItem from="1705034082928" duration="18000" />
+      <workItem from="1705034201243" duration="80000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

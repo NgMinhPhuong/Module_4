@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<style>
+
+</style>
+<body>
+    <header th:fragment="header" class="head">
+
+        <div class="thediv">Header</div>
+    </header>
+    <th:block th:fragment="header">
+        <link rel="stylesheet" th:href="@{css/header.css}">
+    </th:block>
+    <footer th:fragment="footer" class="foot">
+        <div class="thediv">footer</div>
+    </footer>
+    <th:block th:fragment="footer">
+        <link rel="stylesheet" th:href="@{css/footer.css}">
+    </th:block>
+</body>
+</html>

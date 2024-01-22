@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table th:border="1">
+        <tr>
+            <th>Tên bài hát</th>
+            <th>Tên ca sĩ</th>
+            <th>Thể loại nhạc</th>
+            <th>Video</th>
+        </tr>
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.getNameSong()}"></td>
+            <td th:text="${song.getNameSinger()}"></td>
+            <td th:text="${song.getType()}"></td>
+            <td><img th:src="@{'/image/' + ${song.url}}"></td>
+        </tr>
+    </table>
+<a th:href="@{/createe}">Create</a>
+</body>
+</html>

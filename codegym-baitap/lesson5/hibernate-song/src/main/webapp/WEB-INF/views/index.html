@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:object="${song}" method="post" action="/songs" enctype="multipart/form-data">
+        Id: <input th:field="*{id}">
+        Name Song: <input th:field="*{songName}">
+        Singer: <input th:field="*{singer}">
+        Type: <input th:field="*{type}">
+        <input type="file" name="multiPartFile">
+        <input type="submit" th:value="Save">
+    </form>
+
+<table border="1">
+    <tr th:each="song1 : ${songs}">
+        <td th:text="${song1.id}"></td>
+        <td th:text="${song1.songName}"></td>
+        <td th:text="${song1.getSinger()}"></td>
+        <td th:text="${song1.type}"></td>
+    </tr>
+</table>
+</body>
+</html>

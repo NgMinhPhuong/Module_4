@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form y tế</title>
+</head>
+<body>
+<form method="post" action="/form/get" th:object="${form}">
+    Language: <select name="language" th:field="*{language}">
+
+    <option th:selected="${form.language == 'English'}" th:value="English">English</option>
+    <option th:value="Japanese">Japanese</option>
+    <option th:value="Vietnamese">Vietnamese</option>
+</select> <br>
+    Page Size: Show <select name="size">
+    <option th:selected="${form.size == '5'}">5</option>
+    <option th:selected="${form.size == '10'}">10</option>
+    <option th:selected="${form.size == '15'}">15</option>
+</select> emails per page <br>
+
+Spams filter: <input type="checkbox" th:checked="${form.spamsFilter}"> Enable spams filter <br>
+    Signature: <textarea th:field="${form.signature}"></textarea>
+    <br><br>
+    <input  type="submit" value="update">  <input th:type="reset" th:value="Reset">
+</form>
+<h2 th:if="${message != null}">Sucess!</h2>
+</body>
+</html>

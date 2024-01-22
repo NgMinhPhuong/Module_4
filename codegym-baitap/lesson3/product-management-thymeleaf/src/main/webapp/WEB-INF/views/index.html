@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<style>
+
+</style>
+<body>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th colspan="3">Action</th>
+        </tr>
+
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getDescription()}"></td>
+            <td><a class="edit" th:href="@{/products/update/{id}(id=${product.id})}">EDIT</a></td>
+            <td><a class="delete" th:href="@{/products/delete/{id}(id=${product.id})}">DELETE</a></td>
+            <td><a class="create" href="/products/create">CREATE</a></td>
+        </tr>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function ajax(x){
+            $.ajax({
+                url:`${x.href}`,
+                method:'get',
+
+                success: function (response){
+                    document.removeChild(document.querySelector('html'))
+                    console.log(response)
+                    document.write(response);
+                },
+                error: function (erro){
+                    console.log(erro)
+                }
+            })
+            event.preventDefault();
+        }
+        let edit = document.querySelectorAll('.edit');
+        let deletee = document.querySelectorAll('.delete')
+        let create = document.querySelectorAll('.create')
+        for(let x of edit){
+            x.onclick = function (){
+               ajax(x)
+            }
+        }
+        for(let x of deletee){
+            x.onclick = function (){
+                ajax(x)
+            }
+        }
+        for(let x of create){
+            x.onclick = function (){
+                ajax(x)
+            }
+        }
+    </script>
+</body>
+</html>

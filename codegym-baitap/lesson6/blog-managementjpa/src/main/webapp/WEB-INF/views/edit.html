@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form action="/createoredit" method="post" th:object="${blog}">
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+        <label for="email">Name:</label>
+        <input type="email" class="form-control" id="email" th:field="*{name}">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Content:</label>
+        <input class="form-control" id="pwd" th:field="*{content}">
+    </div>
+    <button type="submit" class="btn btn-default">Cập nhật</button>
+</form>
+</body>
+</html>
