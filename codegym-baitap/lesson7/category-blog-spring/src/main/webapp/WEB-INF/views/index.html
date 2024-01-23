@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Content</td>
+            <td>Type</td>
+            <td>description</td>
+        </tr>
+        <tr th:each="blog : ${blogs}">
+            <td th:text="${blog.id}"></td>
+            <td th:text="${blog.content}"></td>
+            <td th:text="${blog.category.type}"></td>
+            <td th:text="${blog.category.description}"></td>
+        </tr>
+    </table>
+
+<a th:if="${blogs.hasPrevious()}" th:href="@{/blog/(page=${blogs.number - 1}, search=${search})}">Trang trước</a>
+<span th:text="${blogs.number + 1}"></span> | <span th:text="${blogs.totalPages}"></span>
+<a th:if="${blogs.hasNext()}" th:href="@{/blog/(page=${blogs.number + 1}, search=${search})}">Trang sau</a>
+</body>
+</html>
