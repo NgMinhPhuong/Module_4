@@ -1,4 +1,4 @@
-package com.codegym.customizephonevalidate.configuration;
+package com.codegym.validateform.configuration;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -19,7 +19,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.codegym.customizephonevalidate")
+@ComponentScan(basePackages = "com.codegym.validateform")
 public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
     private ApplicationContext applicationContext;
 
@@ -55,20 +55,11 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return viewResolver;
     }
 
-    //JPA
-
-
-    public Properties additionalProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
-        return properties;
-    }
 
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("validation-message");
+        messageSource.setBasenames("messageValidation");
         return messageSource;
     }
 }

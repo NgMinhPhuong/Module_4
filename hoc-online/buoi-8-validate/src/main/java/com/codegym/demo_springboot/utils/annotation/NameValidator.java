@@ -14,7 +14,6 @@ public class NameValidator implements ConstraintValidator<NameConstraint, String
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-
         return value.matches("[A-Za-z ]{4,}");
     }
 }

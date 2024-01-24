@@ -1,7 +1,6 @@
 package com.codegym.validateinforuser.configuration;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -54,16 +53,5 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         viewResolver.setCharacterEncoding("UTF-8");
         return viewResolver;
     }
-
-
-
-    public Properties additionalProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
-        return properties;
-    }
-
-
 
 }
