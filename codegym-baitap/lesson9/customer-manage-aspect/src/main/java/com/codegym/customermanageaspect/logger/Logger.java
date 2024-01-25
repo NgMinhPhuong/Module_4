@@ -14,5 +14,4 @@ public class Logger {
         System.out.println("ten phuong thuc: " + joinPoint.getSignature().getName());
         System.out.println("[CMS] co loi xay ra: "+ e.getMessage());
     }
-
 }

@@ -1,4 +1,4 @@
-package com.codegym.customermanageaspect.configuration;
+package com.codegym.borrowbookaspects.configuration;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,7 +18,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.codegym.customermanageaspect")
+@ComponentScan(basePackages = "com.codegym.borrowbookaspects")
 @EnableAspectJAutoProxy
 public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
     private ApplicationContext applicationContext;

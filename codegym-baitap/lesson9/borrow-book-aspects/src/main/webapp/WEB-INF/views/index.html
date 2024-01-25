@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Mượn
+<p th:if="${messageBorrow}" th:text="${messageBorrow}"></p>
+    <form method="post" action="/borrow">
+        <input name="code">
+        <input type="submit" value="Mượn">
+    </form>
+
+Trả
+<p th:if="${messageBack}" th:text="${messageBack}"></p>
+    <form method="post" action="/back">
+        <input name="code">
+        <input type="submit" value="Trả">
+    </form>
+
+</body>
+</html>
