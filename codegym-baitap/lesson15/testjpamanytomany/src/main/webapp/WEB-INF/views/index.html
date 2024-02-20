@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+
+            <td th:each="role,index : ${user.roles}">
+                <span th:if="${user.roles.size() != 2}" th:text="${role.name}"></span>
+
+                <span th:if="${index.count != 2 && user.roles.size()==2}" th:text="${role.name} + ','"></span>
+                <span th:if="${index.count == 2 && user.roles.size()==2}" th:text="${role.name}"></span>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

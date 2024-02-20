@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{css/list.css}">
+</head>
+<body>
+<script th:if="${msg == 'ok'}">
+    alert("Thêm thành công")
+</script>
+<h2>Danh mục sản phẩm</h2>
+<div class="items">
+<div th:each="product,cnt : ${listProduct}" class="item1">
+    <div>
+        <div class="item11">
+            <a th:href="@{/add(id=${product.id})}">
+                <img th:src="@{${product.src}}">
+            </a>
+        </div>
+        <div class="item12">
+            <p th:text="${'Sản phẩm'+cnt.count}"></p>
+            <p th:text="${product.price}"></p>
+        </div>
+    </div>
+</div>
+</div>
+<a href="/cart">Your Cart</a>
+</body>
+</html>

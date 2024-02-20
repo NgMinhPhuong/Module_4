@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+<a href="/logout">Đăng xuất</a>
+<div sec:authorize="hasAnyAuthority({'ROLE_USER','ROLE_ADMIN'})">
+    User
+</div>
+<div sec:authorize="hasAuthority('ROLE_ADMIN')">
+    Admin
+    Test
+
+</div>
+
+</body>
+</html>

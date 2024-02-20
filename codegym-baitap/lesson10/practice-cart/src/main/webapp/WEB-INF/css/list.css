@@ -1,0 +1,40 @@
+.items {
+    width: 1000px;
+    height: 300px;
+    display: flex;
+
+}
+.item2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.item11{
+    flex: 7;
+}
+
+.item12{
+    flex: 3;
+}
+
+h2 {
+    color: red;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+p {
+    text-align: center;
+    vertical-align: center;
+}
+
+.item1{
+    border: 1px solid darkgray;
+}
+
+.item12{
+    background-color: #f7f7f7;
+}

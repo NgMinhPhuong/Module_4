@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <title>Create new student</title>
+
+</head>
+
+<body>
+    </div>
+    <h2>Create student</h2>
+    <p id="result"></p>
+    Name student: <input type="text" name="nameStudent" id="nameStudent"><br>
+    <p id="errName" style="color: red"></p>
+    Point student: <input type="number" name="point" id="point"><br>
+    Gender student: <input type="number" name="gender" id="gender"><br>
+    <select id="classroom">
+
+    </select>
+    <input type="button" value="Create new" id="btnClick" onclick="addNew()"/>
+
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    console.log(0);
+    $(document).ready(function() {
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "get",
+            url: "http://www.localhost:8080/api/classroom",
+            success: function(classrooms) {
+                let select = document.getElementById("classroom");
+                let option;
+                for(let classroom of classrooms) {
+                    option = document.createElement("option");
+                    option.text = classroom.nameClass;
+                    option.value = classroom.id;
+                    select.appendChild(option)
+                }
+            }
+        })
+    })
+    function addNew() {
+        let student = {
+            "nameStudent": document.getElementById("nameStudent").value,
+            "point": document.getElementById("point").value,
+            "gender": document.getElementById("gender").value,
+            "classRoom": {
+                "id": document.getElementById("classroom").value
+            }
+        }
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "post",
+            data: JSON.stringify(student),
+            url: "http://www.localhost:8080/api/student",
+            success: function() {
+                console.log("abc");
+            },
+            error: function (error) {
+                document.getElementById("errName").innerText = (error.responseJSON.nameStudent);
+            }
+        })
+    }
+
+</script>
+
+</html>

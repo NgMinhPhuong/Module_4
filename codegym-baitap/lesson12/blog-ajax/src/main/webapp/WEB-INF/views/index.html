@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <input>
+    <button onclick="ajax()">Search</button>
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Content</td>
+        </tr>
+        <tr>
+            <td th:text="${blog.name}"></td>
+            <td th:text="${blog.content}"></td>
+        </tr>
+    </table>
+<script>
+    function ajax() {
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'text/plain'
+            },
+            url: "",
+            type: 'post',
+            data: document.querySelector('input').value,
+            success: function sucess(result) {
+                console.log(result)
+
+
+                for (let x of result) {
+                    let tr = document.createElement('tr')
+                    let s = ''
+                    s += `<td>${x.name}</td><td>${x.content}</td>`
+                    tr.innerHTML = s;
+                    document.querySelector('table').appendChild(tr);
+                }
+
+
+            }
+        });
+    }
+</script>
+</body>
+</html>

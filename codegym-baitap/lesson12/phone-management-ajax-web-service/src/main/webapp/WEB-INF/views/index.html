@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX</title>
+</head>
+<body>
+<form id="add-smartphone">
+    <h1>Form create</h1>
+    <table>
+        <tr>
+            <td><label for="id">ID:</label></td>
+            <td><input type="text" id="id" placeholder="id"></td>
+        </tr>
+        <tr>
+            <td><label for="producer">Producer:</label></td>
+            <td><input type="text" id="producer" placeholder="producer"></td>
+        </tr>
+        <tr>
+            <td><label for="model">Model:</label></td>
+            <td><input type="text" id="model" placeholder="model"></td>
+        </tr>
+        <tr>
+            <td><label for="price">Price:</label></td>
+            <td><input type="text" id="price" placeholder="price"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add" onclick="addNewSmartPhone()"></td>
+        </tr>
+    </table>
+</form>
+
+<table border="1" class="result">
+    <tr>
+        <td>producer</td>
+        <td>model</td>
+        <td>price</td>
+    </tr>
+    <tr th:each="smart : ${smarts}" th:class="${smart.id}">
+        <td th:text="${smart.producer}"></td>
+        <td th:text="${smart.model}"></td>
+        <td th:text="${smart.price}"></td>
+    </tr>
+</table>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    function addNewSmartPhone() {
+        //lấy dữ liệu từ form html
+        let producer = $('#producer').val();
+        let model = $('#model').val();
+        let price = $('#price').val();
+        let id = $('#id').val();
+        let newSmartphone = {
+            id: id,
+            producer: producer,
+            model: model,
+            price: price
+        };
+        // gọi phương thức ajax
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            data: JSON.stringify(newSmartphone),
+            //tên API
+            url: "http://localhost:8080/api/smartphones",
+            //xử lý khi thành công
+            success: function xhr(result){
+
+                let list = document.querySelectorAll('tr')
+                let newNode = document.createElement('tr')
+                newNode.className = `${result.id}`
+                let s = ''
+                for(let x in result) {
+                    if(x == 'id') continue
+                    s += `<td>${result[x]}</td>`
+                }
+                newNode.innerHTML = s
+                for(let x of list){
+
+                    if(x.className == result.id){
+                        console.log(document.querySelectorAll('table')[1])
+                        x.parentNode.replaceChild(newNode, x)
+                        return;
+                    }
+                }
+                document.querySelectorAll('table')[1].appendChild(newNode);
+            }
+        });
+        //chặn sự kiện mặc định của thẻ
+        event.preventDefault();
+    }
+</script>
+
+</body>
+</html>
