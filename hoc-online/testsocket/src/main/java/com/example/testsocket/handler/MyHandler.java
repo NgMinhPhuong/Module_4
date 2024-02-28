@@ -30,8 +30,7 @@ public class MyHandler extends TextWebSocketHandler {
 
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException, InterruptedException {
-
-        System.out.println(message);
+        System.out.println(message.isLast());
         list.add(session);
         for(WebSocketSession session1 : list){
             session1.sendMessage(message);
