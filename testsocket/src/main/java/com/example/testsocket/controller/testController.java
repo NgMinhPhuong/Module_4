@@ -9,4 +9,8 @@ public class testController {
     public String test(){
         return "/index";
     }
+    @GetMapping("/get")
+    public String get(){
+        return "/get";
+    }
 }

@@ -2,6 +2,7 @@ package com.example.testsocket.handler;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.socket.BinaryMessage;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -21,6 +22,7 @@ public class MyHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         list.add(session);
+        session.setBinaryMessageSizeLimit(200000);
     }
 
     @Override
@@ -30,12 +32,27 @@ public class MyHandler extends TextWebSocketHandler {
 
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException, InterruptedException {
-        System.out.println(message.isLast());
         list.add(session);
         for(WebSocketSession session1 : list){
             session1.sendMessage(message);
         }
-
     }
+
+    @Override
+    protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message)  {
+        byte[] imageData = message.getPayload().array();
+        // Xử lý dữ liệu hình ảnh ở bước trước
+
+        // Gửi dữ liệu hình ảnh đã xử lý cho tất cả các kết nối WebSocket
+        for (WebSocketSession session1 : list) {
+            BinaryMessage processedMessage = new BinaryMessage(imageData);
+            try {
+                session1.sendMessage(processedMessage);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
 
 }

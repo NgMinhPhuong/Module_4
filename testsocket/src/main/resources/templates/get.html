@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Capture</title>
+</head>
+<body>
+<video id="video" autoplay></video>
+<canvas id="canvas"></canvas>
+<img class="show" width="640px" height="480px" alt="lỗi">
+<canvas id="canvas1"></canvas>
+<script>
+    var ws = new WebSocket("ws://localhost:8080/myhandler");
+
+    let recordedBlobs = [];
+    // Lấy đối tượng video và canvas từ HTML
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const canvas1 = document.getElementById('canvas1');
+    const context1 = canvas1.getContext('2d');
+    const anhmau = document.querySelector('.anhmau')
+    // Kiểm tra hỗ trợ getUserMedia
+    if (navigator.mediaDevices.getUserMedia) {
+        // Yêu cầu truy cập vào video từ webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                // Gắn luồng video lên đối tượng video
+                video.srcObject = stream;
+            })
+            .catch(function(error) {
+                console.log('Error accessing webcam:', error);
+            });
+    } else {
+        console.log('getUserMedia is not supported');
+    }
+
+    ws.onerror = function (err){
+        console.log(err)
+    }
+    var luu;
+    document.querySelector(".show").onload = function (){
+        URL.revokeObjectURL(luu);
+    }
+    ws.onmessage = function (response){
+        setTimeout(function (){
+            luu = response.data;
+            document.querySelector('.show').src = response.data
+        },50)
+
+
+    }
+    // Lấy hình ảnh từ video và hiển thị lên canvas
+    function captureImage() {
+
+
+        setInterval(function (){
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(function(blob) {
+                // Create a URL for the Blob
+
+                let blobURL = URL.createObjectURL(blob);
+                ws.send(blobURL)
+
+            })
+    //
+    //
+    //
+    //         // const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    //         //
+    //         // console.log(imageData)
+    //         // const buffer = imageData.data.buffer;
+    //
+    //
+    //
+    //         // const chunkSize = 19000
+    //         // for (let i = 0; i < buffer.byteLength; i += chunkSize) {
+    //         //     const chunk = buffer.slice(i, i + chunkSize);
+    //         //     // Gửi từng phần nhỏ dữ liệu qua socket
+    //         //     ws.send(chunk);
+    //         // }
+    //
+    },20)
+    }
+</script>
+
+<button onclick="captureImage()">Capture</button>
+</body>
+</html>
