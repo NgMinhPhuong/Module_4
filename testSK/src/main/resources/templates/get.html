@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Capture</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<style>
+    .container {
+        position: relative;
+    }
+    .showvideo {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+    }
+
+    .showvideo1{
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        /*animation: abc 0.2s;*/
+    }
+    @keyframes abc {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+</style>
+<body>
+<audio></audio>
+<video id="video" autoplay></video>
+<div class="container" style="display: flex">
+    <video class="showvideo" ></video>
+    <video class="showvideo1" ></video>
+</div>
+
+<canvas id="canvas"></canvas>
+<img class="show" alt="lỗi" style="">
+<canvas id="canvas1"></canvas>
+
+<script>
+    var ws = new WebSocket("ws://192.168.4.235:8080/myhandler1");
+    let mediaRecorder;
+    let chunks = [];
+    // Lấy đối tượng video và canvas từ HTML
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    let videoElement1 = document.querySelector('.showvideo');
+    let videoElement2 = document.querySelector('.showvideo1');
+    async function sleep(ms) {
+        return new Promise(reject => setTimeout(reject, ms));
+    }
+    // Kiểm tra hỗ trợ getUserMedia
+    if (navigator.mediaDevices.getUserMedia) {
+        // Yêu cầu truy cập vào video từ webcam
+        navigator.mediaDevices.getUserMedia({ video: true, audio:true })
+            .then(async function(stream) {
+                // Vòng lặp để tắt từng track audio
+
+                // Gắn luồng video lên đối tượng video
+
+                video.srcObject = stream;
+
+                video.muted = true;
+                // //
+                //   mediaRecorder = new MediaRecorder(stream);
+                //     mediaRecorder.ondataavailable = function (event) {
+                //         chunks.push(event.data);
+                //         let blobb = new Blob(chunks, {type: chunks[0].type})
+                //         console.log('blob',blobb)
+                //         ws.send(blobb)
+                //         chunks = []
+                //     };
+            })
+            .catch(function(error) {
+                console.log('Error accessing webcam:', error);
+            });
+    } else {
+        console.log('getUserMedia is not supported');
+    }
+
+    ws.onerror = function (err){
+        console.log(err)
+    }
+
+
+    var luu;
+    document.querySelector(".show").onload = function (){
+            URL.revokeObjectURL(luu);
+    }
+    ws.onmessage = function (response){
+            console.log(1)
+             luu = URL.createObjectURL(response.data)
+            document.querySelector('.show').src = luu;
+            // luu = URL.createObjectURL(response.data);
+            // document.querySelector('audio').src = luu;
+            // document.querySelector('audio').play()
+            // if(videoElement1.style.zIndex == 1){
+            //     videoElement2.src = luu
+            //     videoElement2.play();
+            //     videoElement2.style.zIndex = 1
+            //     videoElement1.style.zIndex = 0;
+            // } else {
+            //     videoElement1.src = luu;
+            //     videoElement1.play();
+            //     videoElement1.style.zIndex = 1
+            //     videoElement2.style.zIndex = 0;
+            // }
+
+    }
+    // Lấy hình ảnh từ video và hiển thị lên canvas
+    async function captureImage() {
+
+        setInterval(function (){
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(function(blob) {
+                // Create a URL for the Blob
+                ws.send(blob);
+                blob = null;
+            })
+
+    //         mediaRecorder.start();
+    //
+    //         setTimeout(function (){
+    //             mediaRecorder.stop();
+    //         },2500)
+    //
+    },30)
+    }
+</script>
+
+<button onclick="captureImage()">Capture</button>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.codegym.validateinforuser.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -9,7 +10,7 @@ public class User {
     @Size(min = 2, max = 30)
     private String name;
 
-    @Min(18)
+    @Min(value = 18, message = "tuổi phải bự hơn 18")
     private int age;
 
     public User() {
@@ -35,4 +36,6 @@ public class User {
     public void setAge(int age) {
         this.age = age;
     }
+
+
 }

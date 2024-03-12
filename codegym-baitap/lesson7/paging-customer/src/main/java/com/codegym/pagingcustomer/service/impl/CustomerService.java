@@ -30,5 +30,11 @@ public class CustomerService implements ICustomerService {
         return iCustomerRepository.findById(id);
     }
 
+    @Override
+    public Page<Customer> findAll(Pageable pageable) {
+
+        return iCustomerRepository.findAll(pageable);
+    }
+
 
 }

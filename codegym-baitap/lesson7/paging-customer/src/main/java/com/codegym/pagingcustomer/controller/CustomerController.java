@@ -19,9 +19,9 @@ public class CustomerController {
     private ICustomerService iCustomerService;
 
     @GetMapping("/customers")
-    public ModelAndView listCustomers(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "") String search,@RequestParam("id") Customer customer){
+    public ModelAndView listCustomers(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "") String search){
         Page<Customer> customers;
-        customers = iCustomerService.findAllByName(PageRequest.of(page, 1), search);
+        customers = iCustomerService.findAll(PageRequest.of(page, 2));
         ModelAndView modelAndView = new ModelAndView("/list");
         modelAndView.addObject("search", search);
         modelAndView.addObject("customers", customers);

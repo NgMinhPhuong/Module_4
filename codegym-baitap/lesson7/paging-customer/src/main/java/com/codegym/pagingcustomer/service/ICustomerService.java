@@ -11,4 +11,5 @@ public interface ICustomerService {
     Page<Customer> findAllByName(Pageable pageable, String name);
     Page<Customer> findById(Pageable pageable, Long id);
     Optional<Customer> findById(Long id);
+    Page<Customer> findAll(Pageable pageable);
 }

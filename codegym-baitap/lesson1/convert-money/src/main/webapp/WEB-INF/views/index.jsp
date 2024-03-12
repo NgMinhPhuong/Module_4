@@ -16,5 +16,16 @@
             ${money} USD = ${result} VND;
         </h1>
     </c:if>
+<script>
+    let  a = 2;
+    async function abc(){
+        while(true){
+            console.log(1212)
+        }
+    }
+    for(let i = 0 ; i < 10; i++){
+        abc();
+    }
+</script>
 </body>
 </html>

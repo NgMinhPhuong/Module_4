@@ -36,7 +36,6 @@ public class LoginController {
             if (user.getEmail() != null) {
                 setUser = user.getEmail();
             }
-
             // create cookie and set it in response
             Cookie cookie = new Cookie("setUser", setUser);
             cookie.setMaxAge(24 * 60 * 60);

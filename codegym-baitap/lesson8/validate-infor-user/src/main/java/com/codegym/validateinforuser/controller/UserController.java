@@ -4,6 +4,7 @@ import com.codegym.validateinforuser.model.User;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.validation.BindingResult;
+
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,11 +24,12 @@ public class UserController {
     }
 
     @PostMapping("/validateUser")
-    public ModelAndView checkValidation(@Valid @ModelAttribute("user") User user,
+    public ModelAndView checkValidation(@Validated User user,
                                         BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("/index");
         }
         return new ModelAndView("/result");
     }
+
 }

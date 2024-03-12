@@ -72,6 +72,5 @@ public class User implements Validator {
         if(user.getFirstName().length() > 45 || user.getFirstName().length() < 5){
             errors.rejectValue("firstName", "number.length");
         }
-
     }
 }
