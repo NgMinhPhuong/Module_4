@@ -6,9 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
-@Data
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "user")
 public class User {
     @Id
@@ -17,10 +23,5 @@ public class User {
     private String username;
     private String password;
 
-    public User(Long id, String username, String password) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-    }
-    public User(){}
+
 }

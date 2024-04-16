@@ -24,7 +24,7 @@ public class testController {
     }
 
 
-    @GetMapping("/test")
+    @GetMapping("/success")
     public String getToken(String code){
         RestTemplate restTemplate = new RestTemplate();
 
@@ -45,13 +45,13 @@ public class testController {
 
         String res = js.getAccess_token();
         getUserInfo(res);
-        return res;
+        return "redirect:/get";
     }
 
     public String getUserInfo(String access_token){
         String link = Constants.GOOGLE_LINK_GET_USER_INFO + access_token;
         RestTemplate restTemplate = new RestTemplate();
         String response = restTemplate.getForObject(link, String.class);
-        return null;
+        return response;
     }
 }

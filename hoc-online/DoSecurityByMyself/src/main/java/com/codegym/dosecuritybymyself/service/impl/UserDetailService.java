@@ -35,5 +35,6 @@ public class UserDetailService implements IUserDetailService {
         List<UserRole> userRoles = iUserRoleRepository.findAllByUser(user1.getId());
         UserDetailDTO userDetailDTO = new UserDetailDTO(user1, userRoles);
         return userDetailDTO;
+
     }
 }

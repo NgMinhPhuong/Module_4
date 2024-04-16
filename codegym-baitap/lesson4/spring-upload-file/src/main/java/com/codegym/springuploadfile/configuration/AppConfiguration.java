@@ -58,11 +58,11 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
         return viewResolver;
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/image/**")
-                .addResourceLocations("file:" + upload);
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/image/**")
+//                .addResourceLocations("file:" + upload);
+//    }
 
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getResolver() {

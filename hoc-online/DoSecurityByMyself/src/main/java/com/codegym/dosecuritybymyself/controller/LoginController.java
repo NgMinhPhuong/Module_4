@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
     //@PreAuthorize("hasAnyAuthority({'ROLE_ADMIN','ROLE_USER'})")
+    @GetMapping("/")
+    public String no(){
+        return "redirect:/hello";
+    }
     @GetMapping("/hello")
     public String index(){
         return "/views/index";
@@ -17,7 +21,7 @@ public class LoginController {
         return "/views/loginn";
     }
 
-    @PostMapping ("/test")
+    @GetMapping ("/test")
     public String test(){
         System.out.println("hello");
         return "/views/test";

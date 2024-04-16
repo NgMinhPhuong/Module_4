@@ -27,16 +27,7 @@ public class SmartphoneService implements ISmartphoneService {
 
     @Override
     public Smartphone save(Smartphone smartPhone) {
-        Optional<Smartphone> optionalSmartphone = iSmartphoneRepository.findById(smartPhone.getId());
-        if (optionalSmartphone.isPresent()) {
-            Smartphone existingSmartphone = optionalSmartphone.get();
-            existingSmartphone.setProducer(smartPhone.getProducer());
-            existingSmartphone.setModel(smartPhone.getModel());
-            existingSmartphone.setPrice(smartPhone.getPrice());
-            return iSmartphoneRepository.save(existingSmartphone);
-        } else {
             return iSmartphoneRepository.save(smartPhone);
-        }
     }
 
     @Override

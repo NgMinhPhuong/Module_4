@@ -22,7 +22,7 @@ public class UserService implements UserDetailsService {
         listRole.add(new Role(1L, "ROLE_ADMIN"));
         listRole.add(new Role(2L, "ROLE_USER"));
 
-        String password = "$2a$10$xMq9EwZvdKUuvgiaM2T1Iuw9A1EGXVZaCIUPEwn1Isa9ffvPqNabe";
+        String password = "$2a$12$CehvYvJa1nxOC0okEA0SfehvTLmm2H17cN6p1A.phh8KHcpH7466i";
         User userKai = new User(1L, "kai", password);
         Set<Role> roleKai = new HashSet<>();
         roleKai.add(listRole.get(0));

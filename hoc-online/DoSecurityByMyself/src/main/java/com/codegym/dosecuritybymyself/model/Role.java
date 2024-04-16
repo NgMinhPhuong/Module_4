@@ -6,9 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "role")
 public class Role {
@@ -17,10 +22,6 @@ public class Role {
     private Long id;
 
     private String name;
-    public Role(){}
 
-    public Role(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <input type="file" />
+    <button>click</button>
+    <script>
+      const eInput = document.querySelector('input')
+      const button = document.querySelector('button')
+      button.addEventListener('click', () => {
+        const file = eInput.files[0]
+        if(!file){
+          return eInput.click()
+        }
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.addEventListener('load', () => {
+
+          const data = reader.result.split(",")[1];
+          const postData = {
+            name: file.name,
+            type: file.type,
+            data
+          }
+            
+         postData1(postData)
+
+        })
+      })
+      async function postData1(postData){
+        // Cách 1: lưu ý tham số thứ 2 của axious phải dùng strinify()
+        let res = await axios.post("https://script.google.com/macros/s/AKfycbyDQO8gYU9OgibVREnUUcgEZKw6-BJBO85qhAqCtbSJXkbeFFayV1YwNYu8TMNSVhkt/exec",JSON.stringify(postData))
+        console.log(res);
+        // Cách 2:
+        //   let res = await fetch("https://script.google.com/macros/s/AKfycbyDQO8gYU9OgibVREnUUcgEZKw6-BJBO85qhAqCtbSJXkbeFFayV1YwNYu8TMNSVhkt/exec",
+        // {
+        //   method: 'POST',
+        //   body: JSON.stringify(postData)
+        // })
+        //   console.log(await res.json());
+      }
+      // trong link dùng thêm duôi là ?&sz=s500,400,... để thu nhỏ hình theo các kích cõ việc này làm cho việc tải ảnh nhanh hơn vì sizee bé hơn sẽ nhẹ hơn
+    </script>
+  </body>
+</html>

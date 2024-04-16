@@ -48,10 +48,10 @@ public class MyHandler1 extends BinaryWebSocketHandler {
 
         byte[] imageData = message.getPayload().array();
         for (WebSocketSession session1 : list) {
-            if(session1 != session) {
+//            if(session1 != session) {
                 BinaryMessage processedMessage = new BinaryMessage(imageData);
                 session1.sendMessage(processedMessage);
-            }
+//            }
         }
 
     }

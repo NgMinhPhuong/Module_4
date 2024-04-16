@@ -8,9 +8,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "user_role")
 public class UserRole {
@@ -19,17 +24,11 @@ public class UserRole {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "user_role")
+    @JoinColumn(name = "role_id",referencedColumnName = "id")
     private Role role;
-    public UserRole(){}
 
-    public UserRole(Long id, User user, Role role) {
-        this.id = id;
-        this.user = user;
-        this.role = role;
-    }
 }

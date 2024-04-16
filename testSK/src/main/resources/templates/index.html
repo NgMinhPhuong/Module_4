@@ -2,8 +2,11 @@
 
 <html>
    <head>
-      
+      <input>
+      <button onclick="handle()">Click</button>
       <script type = "text/javascript">
+
+
          // function WebSocketTest() {
             
             if ("WebSocket" in window) {
@@ -11,7 +14,9 @@
                
                // Let us open a web socket
                var ws = new WebSocket("ws://localhost:8080/myhandler");
-				
+               function handle(){
+                  ws.send(document.querySelector('input').value)
+               }
                ws.onopen = function() {
                   
                   // Web Socket is connected, send data using send()
@@ -20,6 +25,7 @@
                };
 
                ws.onmessage = function (evt) {
+                  console.log(evt)
                   var received_msg = evt.data;
                   let newTag = document.createElement("p");
                   newTag.innerText = received_msg;

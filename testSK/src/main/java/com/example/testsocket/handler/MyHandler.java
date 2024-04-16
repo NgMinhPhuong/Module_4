@@ -48,14 +48,14 @@ public class MyHandler extends TextWebSocketHandler {
 
         // Gửi dữ liệu hình ảnh đã xử lý cho tất cả các kết nối WebSocket
         for (WebSocketSession session1 : list) {
-            if(session1 != session) {
+//            if(session1 != session) {
                 BinaryMessage processedMessage = new BinaryMessage(imageData);
                 try {
                     session1.sendMessage(processedMessage);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-            }
+//            }
         }
     }
 

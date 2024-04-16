@@ -9,6 +9,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -40,8 +41,8 @@ public class SecurityConfig {
                 .csrf((csrf) -> csrf.disable())
                 .authorizeHttpRequests((authorizeHttpRequests) ->
                         authorizeHttpRequests
-                                .requestMatchers("/login","/test","css/**").permitAll()
-                                .requestMatchers("/hello").authenticated())
+                                .requestMatchers("/login","css/**","/").permitAll()
+                                .requestMatchers("/hello","/test").authenticated())
 //                .authorizeHttpRequests((authorizeHttpRequests) ->
 //                        authorizeHttpRequests
 //                                .requestMatchers("/student/create", "/logout").authenticated())

@@ -14,8 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class UserService implements UserDetailsService {
+public class UserService implements IUserService {
     @Autowired
     private IUserRepository iUserRepository;
 
@@ -26,8 +27,8 @@ public class UserService implements UserDetailsService {
         User user = iUserRepository.findByUsername(username).get();
         UserDTO userDTO = new UserDTO(user);
 
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userDTO, null, userDTO.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        Authentication authentication = new UsernamePasswordAuthenticationToken(userDTO, null, userDTO.getAuthorities());
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return userDTO;
     }

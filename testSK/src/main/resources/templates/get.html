@@ -44,7 +44,7 @@
 <canvas id="canvas1"></canvas>
 
 <script>
-    var ws = new WebSocket("ws://192.168.4.235:8080/myhandler1");
+    var ws = new WebSocket("ws://localhost:8080/myhandler1");
     let mediaRecorder;
     let chunks = [];
     // Lấy đối tượng video và canvas từ HTML
@@ -59,7 +59,7 @@
     // Kiểm tra hỗ trợ getUserMedia
     if (navigator.mediaDevices.getUserMedia) {
         // Yêu cầu truy cập vào video từ webcam
-        navigator.mediaDevices.getUserMedia({ video: true, audio:true })
+        navigator.mediaDevices.getUserMedia({ video: true})
             .then(async function(stream) {
                 // Vòng lặp để tắt từng track audio
 
@@ -95,7 +95,7 @@
             URL.revokeObjectURL(luu);
     }
     ws.onmessage = function (response){
-            console.log(1)
+        console.log(response)
              luu = URL.createObjectURL(response.data)
             document.querySelector('.show').src = luu;
             // luu = URL.createObjectURL(response.data);

@@ -14,13 +14,12 @@ import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 
 @Configuration
 @EnableWebSocket
-@CrossOrigin(origins = "*")
 public class WebSocketConfig implements WebSocketConfigurer {
 
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(myHandler(), "/myhandler");
+        webSocketHandlerRegistry.addHandler(myHandler(), "/myhandler").setAllowedOrigins("*");
 
         webSocketHandlerRegistry.addHandler(myHandler1(), "/myhandler1").setAllowedOrigins("*");;
 
