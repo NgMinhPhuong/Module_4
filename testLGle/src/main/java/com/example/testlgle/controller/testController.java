@@ -24,7 +24,7 @@ public class testController {
     }
 
 
-    @GetMapping("/success")
+    @GetMapping("/api/v1/auth/login-google")
     public String getToken(String code){
         RestTemplate restTemplate = new RestTemplate();
 

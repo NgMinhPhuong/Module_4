@@ -8,7 +8,9 @@
   </head>
   <body>
     <input type="file" />
-    <button>click</button>
+  
+    <button>Thêm</button>
+    <button onclick="deletee()">Xoá</button>
     <script>
       const eInput = document.querySelector('input')
       const button = document.querySelector('button')
@@ -29,12 +31,12 @@
           }
             
          postData1(postData)
-
+            
         })
       })
       async function postData1(postData){
         // Cách 1: lưu ý tham số thứ 2 của axious phải dùng strinify()
-        let res = await axios.post("https://script.google.com/macros/s/AKfycbyDQO8gYU9OgibVREnUUcgEZKw6-BJBO85qhAqCtbSJXkbeFFayV1YwNYu8TMNSVhkt/exec",JSON.stringify(postData))
+        let res = await axios.post("https://script.google.com/macros/s/AKfycbyIGhK2NhhJos2W5fV3ww3cJ5gAdHcSK25lqrFCVQc0dzbtovfTAyyX1vJ7sTRlXNB3/exec",JSON.stringify(postData))
         console.log(res);
         // Cách 2:
         //   let res = await fetch("https://script.google.com/macros/s/AKfycbyDQO8gYU9OgibVREnUUcgEZKw6-BJBO85qhAqCtbSJXkbeFFayV1YwNYu8TMNSVhkt/exec",
@@ -45,6 +47,20 @@
         //   console.log(await res.json());
       }
       // trong link dùng thêm duôi là ?&sz=s500,400,... để thu nhỏ hình theo các kích cõ việc này làm cho việc tải ảnh nhanh hơn vì sizee bé hơn sẽ nhẹ hơn
+    </script>
+    <script>
+        async function deletee(){
+          try{
+            const data = {
+            url: "http://drive.google.com/thumbnail?id=12T8SZGNytjjdw1yPW0htMvRfduwyEVyo"
+          }
+          let res = await axios.post("https://script.google.com/macros/s/AKfycbxzXRnBBrBuEDu1emSrP6Gz36seqSVv1XWXM05eALh0pySxj-bEAqGVk0T8raeh5Ej3/exec",JSON.stringify(data))
+          console.log(res);
+          } catch(e){
+            console.log(e);
+          }
+          
+        }
     </script>
   </body>
 </html>

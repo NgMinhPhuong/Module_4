@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+  </head>
+  <body>
+    <script>
+        
+      var socket = new SockJS("http://localhost:8080/mysocket");
+      var stompClient = Stomp.over(socket);
+      stompClient.debug = null;
+      stompClient.connect({}, function (frame) {
+
+        console.log("Connected: " + frame);
+
+        stompClient.subscribe("/topic/messages", function (message) {
+        console.log("Received message: " + message.body);
+        
+      });
+      stompClient.ws.onclose = function(event){
+        console.log(event);
+      }
+        // Gửi tin nhắn từ client tới server
+        stompClient.send("/app/chat", {Authorization:'ds'}, "Hello, server!");
+      });
+
+      
+    </script>
+  </body>
+</html>

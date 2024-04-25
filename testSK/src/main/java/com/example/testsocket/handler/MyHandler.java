@@ -22,7 +22,7 @@ public class MyHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         list.add(session);
-        session.setBinaryMessageSizeLimit(200000);
+        session.setTextMessageSizeLimit(123456);
     }
 
     @Override

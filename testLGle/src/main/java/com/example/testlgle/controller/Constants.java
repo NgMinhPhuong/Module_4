@@ -9,11 +9,11 @@ package com.example.testlgle.controller;/*
  */
 public class Constants {
 
-	public static String GOOGLE_CLIENT_ID = "522174800788-00t0dju48b4tpc3athpqd4s63siipgo0.apps.googleusercontent.com";
+	public static String GOOGLE_CLIENT_ID = "1098741086955-g7lb7bgqeru3cfblolmpgu9bgnmb1peo.apps.googleusercontent.com";
 
-	public static String GOOGLE_CLIENT_SECRET = "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";
+	public static String GOOGLE_CLIENT_SECRET = "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";
 
-	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/success";
+	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/api/v1/auth/login-google";
 
 	public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
 
